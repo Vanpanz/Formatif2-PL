@@ -2,6 +2,14 @@
 
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SchoolClass\IndexController;
+use App\Http\Controllers\SchoolClass\CreateController;
+use App\Http\Controllers\SchoolClass\ShowController;
+use App\Http\Controllers\SchoolClass\EditController;
+use App\Http\Controllers\SchoolClass\StoreController;
+use App\Http\Controllers\SchoolClass\UpdateController;
+use App\Http\Controllers\SchoolClass\DestroyController;
+use App\Http\Controllers\MajorController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,6 +42,7 @@ Route::name('students.')->prefix('students')->group(function(){
      Route::delete('/{$id}', [StudentController::class, 'destroy'])->name('destroy');
 });
 
+//Manajemen Data Guru (Action Controller)
 Route::name('teachers.')->prefix('teachers')->group(function(){
     Route::get('/', [TeacherController::class, 'index'])->name('index');
         
@@ -51,3 +60,24 @@ Route::name('teachers.')->prefix('teachers')->group(function(){
     
 });
 
+//Manajemen School Class (Invokable)
+Route::name('classes.')->prefix('classes')->group(function(){
+
+    
+    Route::get('/', IndexController::class)->name('index');
+
+    Route::get('/create', CreateController::class)->name('create');
+
+    Route::get('/{id}', ShowController::class)->name('show');
+
+    Route::get('/{id}/edit', EditController::class)->name('edit');
+
+    Route::post('/', StoreController::class)->name('store');
+
+    Route::put('/{$id}', UpdateController::class)->name('update');
+
+    Route::delete('/{$id}', DestroyController::class)->name('destroy');
+});
+
+//manajemen major controller (resource)
+Route::resource('majors', MajorController::class);
