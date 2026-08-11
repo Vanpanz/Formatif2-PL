@@ -11,54 +11,69 @@ class MajorController extends Controller
      */
     public function index()
     {
-        return "Menampilkan halaman daftar jurusan";
+        $title = "Sistem Sekolah - Daftar Jurusan";
+        $majors = [
+        [
+            'id' => 1,
+            'code' => 'AKL',
+            'name' => 'Akuntansi dan Keuangan Lembaga',
+            'description' => 'Program keahlian yang membekali murid dengan kompetensi pencatatan dan pelaporan keuangan.',
+        ],
+        [
+            'id' => 2,
+            'code' => 'TKJ',
+            'name' => 'Teknik Komputer dan Jaringan',
+            'description' => 'Program keahlian yang membekali murid dengan kompetensi instalasi, konfigurasi, dan pemeliharaan jaringan komputer.',
+        ],
+        [
+            'id' => 3,
+            'code' => 'BD',
+            'name' => 'Bisnis Digital',
+            'description' => 'Program keahlian yang membekali murid dengan kompetensi pemasaran dan pengelolaan bisnis berbasis digital.',
+        ],
+];
+        return view('majors.index', [
+            'title' => $title,
+            'majors' => $majors
+        ]);
+    }
+   public function show(string $id)
+    {
+        $title = "Sistem Sekolah - Detail Jurusan";
+        return view('majors.show', [
+            'title' => $title
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return "Menampilkan halaman tambah jurusan";
+        $title = "Sistem Sekolah - Catat Jurusan Baru";
+        return view('majors.create', [
+            'title' => $title
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function edit(string $id)
+    {
+        $title = "Sistem Sekolah - Ubah Data Jurusan";
+        return view('majors.edit', [
+            'title' => $title
+        ]);
+    }
+
+    public function store()
     {
         return "Melakukan penambahan data jurusan";
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        return "Menampilkan jurusan dengan ID: {$id}";
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return "Menampilkan halaman edit jurusan";
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(string $id)
     {
         return "Melakukan perubahan data jurusan";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         return "Menghapus data jurusan";
     }
+
 }

@@ -3,10 +3,6 @@
 @section('title', $title)
 
 @section('content')
-
-    <x-alert type='WARNING'> 
-        Terdapat kesalahan ketika menambahkan data guru baru ke dalam sistem sekolah
-    </x-alert>
     
     <div class="mb-8 border-b border-[#E5E3DB] pb-5">
         <a href="" class="text-xs uppercase tracking-[0.15em] text-slate-400 hover:text-[#A16207]">&larr; Buku
@@ -41,22 +37,16 @@
             </select>
         </div>
 
-        <div>
-            <label for="Mata Pelajaran"
-                class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Mata Pelajaran</label>
-            <select id="major" name="major"
-                class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-                <option value="">Pilih mata pelajaran</option>
-                <option value="">Akuntansi Dasar</option>
-                <option value="">Jaringan Komputer</option>
-                <option value="">BiD</option>
-            </select>
+         <div>
+            <label for="Mata Pelajaran" class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Mata Pelajaran</label>
+            <input type="text" id="subject" name="subject" placeholder="Mata pelajaran yang diampu"
+                class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-[#A16207] focus:bg-white focus:outline-none">
         </div>
 
         <div>
             <label for="No. Telepon"
                 class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Nomor Telepon</label>
-            <input type="text" id="phone" name="phone" placeholder="Contoh: 08123456789"
+            <input type="text" id="phone_number" name="phone_number" placeholder="Contoh: 08123456789"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-[#A16207] focus:bg-white focus:outline-none">
         </div>
 
@@ -70,7 +60,7 @@
         </div>
 
         <div class="flex justify-end gap-4 border-t border-[#EFEDE6] pt-6">
-            <a href="#" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">Batal</a>
+            <a href="{{ route('teachers.index') }}" class="px-4 py-2.5 text-sm font-medium text-slate-500 hover:text-[#16213A]">Batal</a>
             <button type="submit"
                 class="bg-[#16213A] px-6 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">Simpan
                 ke Buku Induk</button>
