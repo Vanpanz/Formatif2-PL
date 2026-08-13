@@ -12,7 +12,7 @@
         <p class="mb-1 text-[11px] uppercase tracking-[0.2em] text-[#A16207]">Tahun Ajaran 2025/2026</p>
         <h1 class="font-display text-3xl font-semibold text-[#16213A]">Daftar Kelas</h1>
     </div>
-    <a href="{{ route('teachers.create') }}" class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">
+    <a href="{{ route('classes.create') }}" class="bg-[#16213A] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#26324f]">
         Catat Kelas Baru
     </a>
     </div>
@@ -48,10 +48,10 @@
                     </td>
                     <td class="px-5 py-4">
                         <div class="flex justify-end gap-4 text-xs font-medium">
-                            <a href="{{ route('teachers.show', ['id' => 1]) }}" class="text-[#16213A] hover:text-[#A16207]">Lihat</a>
-                            <a href="{{ route('teachers.edit', ['id' => 1]) }}" class="text-[#16213A] hover:text-[#A16207]">Ubah</a>
+                            <a href="{{ route('classes.show', ['id' => 1]) }}" class="text-[#16213A] hover:text-[#A16207]">Lihat</a>
+                            <a href="{{ route('classes.edit', ['id' => 1]) }}" class="text-[#16213A] hover:text-[#A16207]">Ubah</a>
                             <form action="" method="POST"
-                                onsubmit="return confirm('Hapus data guru ini dari buku induk?')">
+                                onsubmit="return confirm('Hapus data kelas ini dari buku induk?')">
 
                                 <button type="submit" class="text-red-700 hover:text-red-900">Hapus</button>
                             </form>
