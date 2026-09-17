@@ -26,9 +26,9 @@
                 class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Tingkat</label>
             <select id="grade" name="grade"
                 class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-                <option value selected="Dua Belas">XII</option>
-                <option value="Sebelas">XI</option>
-                <option value="Sepuluh">X</option>
+                <option value selected="XII">XII</option>
+                <option value="XI">XI</option>
+                <option value="X">X</option>
             </select>
         </div>
 
@@ -55,6 +55,7 @@
                     <option value="{{ $teacher['id'] }}"
                         {{ $class['teacher_id'] == $teacher['id'] ? 'selected' : '' }}>
                         {{ $teacher['name'] }}
+                    </option>
                 @endforeach
             </select>
         </div>

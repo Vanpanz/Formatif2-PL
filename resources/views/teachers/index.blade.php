@@ -51,8 +51,8 @@
                      <td class="px-5 py-4">
                         {{ $teacher['phone_number'] }}
                     </td>
-                    <td class="px-5 py-4">
-                        {{ $teacher['status'] }}
+                    <td class="px-5 py-4 text-right">
+                        <x-status-badge :status="$teacher['status']" />
                     </td>
                     <td class="px-5 py-4">
                         <div class="flex justify-end gap-4 text-xs font-medium">
