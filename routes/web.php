@@ -19,15 +19,15 @@ Route::get('/', function () {
 });
 
 //Authentication
-Route::get('/login', [AuthController::class, 'loginView'])->name('login-view');
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post');
-Route::get('/register', [AuthController::class, 'registerView'])->name('register-view');
-Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/login', [AuthController::class, 'loginView'])->name('login-view')->middleware('guest');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post')->middleware('guest');
+Route::get('/register', [AuthController::class, 'registerView'])->name('register-view')->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post')->middleware('guest');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 //Manajemen Data Siswa (Action Controller)
-Route::name('students.')->prefix('students')->group(function(){
+Route::name('students.')->middleware(['role:student,teacher', 'auth'])->prefix('students')->group(function(){
 
     //Halaman Daftar Siswa
     Route::get('/', [StudentController::class, 'index'])->name('index');
@@ -52,7 +52,7 @@ Route::name('students.')->prefix('students')->group(function(){
 });
 
 //Manajemen Data Guru (Action Controller)
-Route::name('teachers.')->prefix('teachers')->group(function(){
+Route::name('teachers.')->middleware(['role:teacher', 'auth'])->prefix('teachers')->group(function(){
     Route::get('/', [TeacherController::class, 'index'])->name('index');
         
     Route::get('/create', [TeacherController::class, 'create'])->name('create');
@@ -70,7 +70,7 @@ Route::name('teachers.')->prefix('teachers')->group(function(){
 });
 
 //Manajemen School Class (Invokable)
-Route::name('classes.')->prefix('classes')->group(function(){
+Route::name('classes.')->middleware(['role:teacher', 'auth'])->prefix('classes')->group(function(){
 
     
     Route::get('/', IndexController::class)->name('index');
@@ -89,5 +89,5 @@ Route::name('classes.')->prefix('classes')->group(function(){
 });
 
 //manajemen major controller (resource)
-Route::resource('majors', MajorController::class)
+Route::resource('majors', MajorController::class)->middleware(['role:teacher', 'auth'])
     ->parameters(['majors' => 'id']);
